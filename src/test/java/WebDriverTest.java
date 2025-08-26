@@ -11,19 +11,18 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class firstTest {
+public class WebDriverTest {
 
     WebDriver driver;
-    String url = "https://otus.home.kartushin.su/training.html";
 
     @Test
-    void Test1() {
+    void TestInput() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get(url);
+        driver.get(TestConfig.getBaseUrl());
 
         WebElement input = driver.findElement(By.id("textInput"));
         input.sendKeys("ОТУС");
@@ -32,13 +31,13 @@ public class firstTest {
     }
 
     @Test
-    void Test2() throws InterruptedException {
+    void TestModal() throws InterruptedException {
         ChromeOptions options = new ChromeOptions();
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(options);
         driver.manage().window().fullscreen();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get(url);
+        driver.get(TestConfig.getBaseUrl());
 
         WebElement button = driver.findElement(By.id("openModalBtn"));
         button.click();
@@ -48,13 +47,13 @@ public class firstTest {
     }
 
     @Test
-    void Test3() {
+    void TestForm() {
         ChromeOptions options = new ChromeOptions();
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.get(url);
+        driver.get(TestConfig.getBaseUrl());
 
         WebElement inputName = driver.findElement(By.id("name"));
         inputName.sendKeys("фыв");
