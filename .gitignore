@@ -1,5 +1,5 @@
 .idea
 *.iml
-
+target/*
 ### Mac OS ###
 .DS_Store
